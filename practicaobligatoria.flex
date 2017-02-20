@@ -5,8 +5,6 @@
 %line
 %column
 
-%state estadoNumEntero, estadoNumReal, estadoConstLiteral, comentarioMultilinea
-
 %init{
 
 %init}
@@ -19,7 +17,7 @@
 
 %eof}
 
-//Macros 
+//Macros
 
 id=[a-zA-Z_$][a-zA-Z_$0-9]*
 s= + | -
@@ -30,6 +28,9 @@ hexadecimalReal= "0x"s?[0-9A-F]+"."[0-9A-F]+
 decimalReal= s?[0-9]+"."[0-9]+
 octalReal= "0"s?[0-7]+"."+[0-7]+
 comentarioUnaLinea="//".*
+contenidoComentario= [^*] | "*"[^/]
+constanteLiteral = "'"{contenidoConstanteLiteral}"'"
+contenidoConstanteLiteral = [^']* |  [^']*"\'"[^']*
 
 %%
 
@@ -53,11 +54,10 @@ comentarioUnaLinea="//".*
 
 
 //Constantes literales
-"'".+"'"	{System.out.println("<constlit,"+yytext()+">");}
+{constanteLiteral}	{System.out.println("<constlit,"+yytext()+">");}
 
 
 //Comentarios de proposito general
-{comentarioUnaLinea}	{System.out.println(yytext());}
+{comentarioUnaLinea}	{System.out.println("<comentario,"yytext()+">");}
 
-<YYINITIAL> "/*"	{yybegin(comentarioMultilinea);}
-<comentarioMultilinea>	"*/"	{yybegin(YYINITIAL); }
+"/*"{contenidoComentario}+"*/"  {System.out.println("<comentario,"yytext()+">");}
