@@ -1,5 +1,5 @@
 %%
-//pruebaaddandcommit
+//pruebaaddandcommit2
 %standalone
 %class practicaobligatoria
 %line
