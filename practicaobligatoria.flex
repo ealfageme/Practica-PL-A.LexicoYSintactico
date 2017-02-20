@@ -1,5 +1,9 @@
 %%
+<<<<<<< HEAD
 //pruebaaddandcommit2
+=======
+
+>>>>>>> b94ed1564a5fc4004f3c366c79e0b66305180079
 %standalone
 %class practicaobligatoria
 %line
