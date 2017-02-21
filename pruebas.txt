@@ -1,0 +1,34 @@
+/*Identificadores:
+-Que debe reconocer
+*/
+contador contador1 $acumulador_total_2 f$_f
+//Que no debe reconocer
+_dos 28yy7 hola. x/
+
+/*Constint:
+-Que debe reconocer
+*/
++123 , -69 , 45,+0123 , -064 , 045,0x+123 , 0x-A6F9 , 0xFFFF
+//Que no debe reconocer
+
+/*Constfloat
+-Que debe reconocer
+*/
++123.456 , -0.69 , 45.0,+0123.456 , -064.77 , 045.16, 00.35,$+123.0 , $-E.A6F9 , $0.FFFF
+//Que no debe reconocer
+
+/*Constlit
+-Que debe reconocer
+*/
+'constante literal con \'contenido\' entrecomillado'
+//Que no debe reconocer
+
+/*Comentarios
+-Que debe reconocer
+*/
+
+// Hola mundo
+/* Adios mundo //
+*/
+
+//Que no debe reconocer
