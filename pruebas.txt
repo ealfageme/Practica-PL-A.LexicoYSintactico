@@ -1,5 +1,4 @@
-
-0xFFFF +123.456 +0123 -064
-
-$+123.0 $-E.A6F9 $0.FFFF 0x-e.5b
-
+//Funcionan
+0xFFFF +123.456 +123 0-64
+//No funcionan
+$+123.0 0x-E,A6F9 _hola 0x-e.5b
