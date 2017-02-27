@@ -10,8 +10,8 @@ Identificador = ({Letra}|"$")( {Letra}|{Digito}|"$"|"_" )*
 Decimal = [1-9]({Digito})*
 Octal = ([0-7])*
 Hexa = ([0-9A-F])*
-Constint = ( ("+"|"-")?{Decimal} | "0"("+"|"-")?{Octal} | "0x"("+"|"-")?{Hexa} )  
-RealDecimal = ("+"|"-")?("0."{Digito}+|{Decimal}"."{Digito}+)  
+Constint = ( ("+"|"-")?{Decimal} | "0"("+"|"-")?{Octal} | "0x"("+"|"-")?{Hexa} )
+RealDecimal = ("+"|"-")?("0."{Digito}+|{Decimal}"."{Digito}+)
 RealOctal = ("0"("+"|"-")?{Octal}"."{Octal})
 RealHexa = "0x"("+"|"-")?({Hexa}"."{Hexa})
 Constfloat = ({RealDecimal}|{RealOctal}|{RealHexa})
@@ -36,8 +36,7 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 "{"	{System.out.println("<Llave_A,"+yytext()+">");}
 "}"	{System.out.println("<Llave_C,"+yytext()+">");}
 
-"+"	{System.out.println("<Suma,"+yytext()+">");}
-"-"	{System.out.println("<Resta,"+yytext()+">");}
+
 "*"	{System.out.println("<Producto,"+yytext()+">");}
 "/"	{System.out.println("<Division,"+yytext()+">");}
 "%"	{System.out.println("<Modulo,"+yytext()+">");}
@@ -69,4 +68,6 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 {Constlit}	{System.out.println("<Constlit,"+yytext()+">");}
 {Comentario}	{System.out.println("<Comentario,"+yytext()+">");}
 
+"+"	{System.out.println("<Suma,"+yytext()+">");}
+"-"	{System.out.println("<Resta,"+yytext()+">");}
 "."	{System.out.println("<Punto,"+yytext()+">");}
