@@ -1,7 +1,6 @@
 
 %%
 
-%standalone
 %class Lexico
 
 Letra = [a-zA-Z]
