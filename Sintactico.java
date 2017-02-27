@@ -10,7 +10,7 @@
         firstFilePos = 2;
         encodingName = argv[1];
         try {
-          java.nio.charset.Charset.forName(encodingName); // Side-effect: is encodingName valid? 
+          java.nio.charset.Charset.forName(encodingName); // Side-effect: is encodingName valid?
         } catch (Exception e) {
           System.out.println("Invalid encoding '" + encodingName + "'");
           return;
@@ -22,7 +22,7 @@
           java.io.FileInputStream stream = new java.io.FileInputStream(argv[i]);
           java.io.Reader reader = new java.io.InputStreamReader(stream, encodingName);
           scanner = new Lexico(reader);
-          while ( !scanner.zzAtEOF ) scanner.yylex();
+          while ( !scanner.getZzAtEOF() ) scanner.yylex();
         }
         catch (java.io.FileNotFoundException e) {
           System.out.println("File not found : \""+argv[i]+"\"");
