@@ -2,7 +2,7 @@
 %%
 
 %standalone
-%class Obligatoria
+%class Lexico
 
 Letra = [a-zA-Z]
 Digito = [0-9]
