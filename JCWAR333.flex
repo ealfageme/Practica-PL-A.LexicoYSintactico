@@ -1,7 +1,10 @@
 
 %%
+%standalone
+%class Fallo
 
-%class Lexico
+%line
+%column
 
 Letra = [a-zA-Z]
 Digito = [0-9]
@@ -14,7 +17,7 @@ RealDecimal = ("+"|"-")?("0."{Digito}+|{Decimal}"."{Digito}+)
 RealOctal = ("0"("+"|"-")?{Octal}"."{Octal})
 RealHexa = "0x"("+"|"-")?({Hexa}"."{Hexa})
 Constfloat = ({RealDecimal}|{RealOctal}|{RealHexa})
-Constlit = "'"([^"'"]|"\'")*"'"
+Constlit = "'"("\'"|[^'])+"'"
 ComentarioLinea = "//"(.)*
 ComentarioLargo = "/*"~"*/"
 Comentario = {ComentarioLinea}|{ComentarioLargo}
@@ -34,7 +37,7 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 ")"	{System.out.println("<Parentesis_C,"+yytext()+">");}
 "{"	{System.out.println("<Llave_A,"+yytext()+">");}
 "}"	{System.out.println("<Llave_C,"+yytext()+">");}
-
+" " {System.out.println("<Espacio,"+yytext()+">");}
 
 "*"	{System.out.println("<Producto,"+yytext()+">");}
 "/"	{System.out.println("<Division,"+yytext()+">");}
@@ -65,7 +68,10 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 {Constint}	{System.out.println("<Constint,"+yytext()+">");}
 {Constfloat}	{System.out.println("<Constfloat,"+yytext()+">");}
 {Constlit}	{System.out.println("<Constlit,"+yytext()+">");}
+"'" {System.out.println("\""+"Error. Constante literal incompleta."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 {Comentario}	{System.out.println("<Comentario,"+yytext()+">");}
+"/*"  {System.out.println("\""+"Error. Comentario multilinea de apertura incompleto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
+"*/"  {System.out.println("\""+"Error. Comentario multilinea de cierre incompleto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 
 "+"	{System.out.println("<Suma,"+yytext()+">");}
 "-"	{System.out.println("<Resta,"+yytext()+">");}

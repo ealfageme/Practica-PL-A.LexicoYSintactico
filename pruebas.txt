@@ -1,4 +1,12 @@
-//Funcionan
+/*//Funcionan
 0xFFFF +123.456 +123 0-64
 //No funcionan
-$+123.0 0x-E,A6F9 _hola 0x-e.5b
+$+123.0 0x-E,A6F9 _hola 0x-e.5b*/
+
+/* nj,.
+'hola ' for
+\'bj,jkj3bbhj0-64
+
+
+
+'
