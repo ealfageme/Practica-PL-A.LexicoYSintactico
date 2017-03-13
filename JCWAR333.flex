@@ -11,20 +11,23 @@ Digito = [0-9]
 Identificador = ({Letra}|"$")( {Letra}|{Digito}|"$"|"_" )*
 Decimal = [1-9]({Digito})*
 Octal = ([0-7])*
+
 Hexa = ([0-9A-F])*
+HexaError = ([0-9a-zG-Z])*
 Constint = ( ("+"|"-")?{Decimal} | "0"("+"|"-")?{Octal} | "0x"("+"|"-")?{Hexa} )
 RealDecimal = ("+"|"-")?("0."{Digito}+|{Decimal}"."{Digito}+)
 RealOctal = ("0"("+"|"-")?{Octal}"."{Octal})
+RealOctalError = ("0"("+"|"-")?({Octal}"."{Digito}*|{Digito}*"."{Octal}|{Digito}*"."{Digito}*))
 RealHexa = "0x"("+"|"-")?({Hexa}"."{Hexa})
+RealHexaError = "0x"("+"|"-")?({Hexa}"."{HexaError}|{HexaError}"."{Hexa}|{HexaError}"."{HexaError})
 Constfloat = ({RealDecimal}|{RealOctal}|{RealHexa})
-Constlit = "'"("\'"|[^'])+"'"
+Constlit = "'"([^\n]|"\\'"|[^'])+"'"
 ComentarioLinea = "//"(.)*
 ComentarioLargo = "/*"~"*/"
 Comentario = {ComentarioLinea}|{ComentarioLargo}
 
 %{
-/*
-*/
+
 %}
 
 %%
@@ -72,7 +75,8 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 {Comentario}	{System.out.println("<Comentario,"+yytext()+">");}
 "/*"  {System.out.println("\""+"Error. Comentario multilinea de apertura incompleto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 "*/"  {System.out.println("\""+"Error. Comentario multilinea de cierre incompleto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
-
+{RealHexaError} {System.out.println("\""+"Error. Numero Hexadecimal incorrecto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
+{RealOctalError} {System.out.println("\""+"Error. Numero Octal incorrecto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 "+"	{System.out.println("<Suma,"+yytext()+">");}
 "-"	{System.out.println("<Resta,"+yytext()+">");}
 "."	{System.out.println("<Punto,"+yytext()+">");}
