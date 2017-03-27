@@ -33,23 +33,23 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 %%
 
 
-","	{System.out.println("<Coma,"+yytext()+">");}
-";"	{System.out.println("<Punto_Coma,"+yytext()+">");}
-"="	{System.out.println("<Asignacion,"+yytext()+">");}
-"("	{System.out.println("<Parentesis_A,"+yytext()+">");}
-")"	{System.out.println("<Parentesis_C,"+yytext()+">");}
-"{"	{System.out.println("<Llave_A,"+yytext()+">");}
-"}"	{System.out.println("<Llave_C,"+yytext()+">");}
-" " {System.out.println("<Espacio,"+yytext()+">");}
+","	{return java_cup.runtime.Synbol(sym.coma);}
+";"{return java_cup.runtime.Synbol(sym.puntoycoma);}
+"="	{return java_cup.runtime.Synbol(sym.igual);}
+"("	{return java_cup.runtime.Synbol(pAbierto);}
+")"	{return java_cup.runtime.Synbol(sym.pCerrado);}
+"{"	{return java_cup.runtime.Synbol(sym.llaveAbierta);}
+"}"	{return java_cup.runtime.Synbol(sym.llaveCerrada);}
+" " {return java_cup.runtime.Synbol(sym.espacio);}
 
-"*"	{System.out.println("<Producto,"+yytext()+">");}
-"/"	{System.out.println("<Division,"+yytext()+">");}
-"%"	{System.out.println("<Modulo,"+yytext()+">");}
-"=="	{System.out.println("<Igualdad,"+yytext()+">");}
-"<"	{System.out.println("<Menor,"+yytext()+">");}
-">"	{System.out.println("<Mayor,"+yytext()+">");}
-">="	{System.out.println("<Mayor_Igual,"+yytext()+">");}
-"<="	{System.out.println("<Menor_Igual,"+yytext()+">");}
+"*"	{return java_cup.runtime.Synbol(sym.por);}
+"/"	{return java_cup.runtime.Synbol(sym.barrainclinada);}
+"%"	{return java_cup.runtime.Synbol(sym.resto);}
+"=="	{return java_cup.runtime.Synbol(sym.igual);}
+"<"	{return java_cup.runtime.Synbol(sym.menorque);}
+">"	{return java_cup.runtime.Synbol(sym.mayorque);}
+">="	{return java_cup.runtime.Synbol(sym.mayoroigualque);}
+"<="	{return java_cup.runtime.Synbol(sym.menoroigualque);}
 
 "struct"	{System.out.println("<STRUCT,"+yytext()+">");}
 "if"	{System.out.println("<IF,"+yytext()+">");}
