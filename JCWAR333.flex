@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 %%
 %standalone
@@ -33,50 +34,53 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 %%
 
 
-","	{return java_cup.runtime.Synbol(sym.coma);}
-";"{return java_cup.runtime.Synbol(sym.puntoycoma);}
-"="	{return java_cup.runtime.Synbol(sym.igual);}
-"("	{return java_cup.runtime.Synbol(pAbierto);}
-")"	{return java_cup.runtime.Synbol(sym.pCerrado);}
-"{"	{return java_cup.runtime.Synbol(sym.llaveAbierta);}
-"}"	{return java_cup.runtime.Synbol(sym.llaveCerrada);}
-" " {return java_cup.runtime.Synbol(sym.espacio);}
+","	{return java_cup.runtime.Symbol(sym.coma);}
+";" {return java_cup.runtime.Symbol(sym.puntoycoma);}
+"="	{return java_cup.runtime.Symbol(sym.igual);}
+"("	{return java_cup.runtime.Symbol(pAbierto);}
+")"	{return java_cup.runtime.Symbol(sym.pCerrado);}
+"{"	{return java_cup.runtime.Symbol(sym.llaveAbierta);}
+"}"	{return java_cup.runtime.Symbol(sym.llaveCerrada);}
+" " {return java_cup.runtime.Symbol(sym.espacio);}
 
-"*"	{return java_cup.runtime.Synbol(sym.por);}
-"/"	{return java_cup.runtime.Synbol(sym.barrainclinada);}
-"%"	{return java_cup.runtime.Synbol(sym.resto);}
-"=="	{return java_cup.runtime.Synbol(sym.igual);}
-"<"	{return java_cup.runtime.Synbol(sym.menorque);}
-">"	{return java_cup.runtime.Synbol(sym.mayorque);}
-">="	{return java_cup.runtime.Synbol(sym.mayoroigualque);}
-"<="	{return java_cup.runtime.Synbol(sym.menoroigualque);}
+"*"	{return java_cup.runtime.Symbol(sym.por);}
+"/"	{return java_cup.runtime.Symbol(sym.barrainclinada);}
+"%"	{return java_cup.runtime.Symbol(sym.resto);}
+"=="	{return java_cup.runtime.Symbol(sym.igual);}
+"<"	{return java_cup.runtime.Symbol(sym.menorque);}
+">"	{return java_cup.runtime.Symbol(sym.mayorque);}
+">="	{return java_cup.runtime.Symbol(sym.mayoroigualque);}
+"<="	{return java_cup.runtime.Symbol(sym.menoroigualque);}
 
-"struct"	{System.out.println("<STRUCT,"+yytext()+">");}
-"if"	{System.out.println("<IF,"+yytext()+">");}
-"then"	{System.out.println("<THEN,"+yytext()+">");}
-"else"	{System.out.println("<ELSE,"+yytext()+">");}
-"for"	{System.out.println("<FOR,"+yytext()+">");}
-"while"	{System.out.println("<WHILE,"+yytext()+">");}
-"do"	{System.out.println("<DO,"+yytext()+">");}
-"until"	{System.out.println("<UNTIL,"+yytext()+">");}
-"not"	{{System.out.println("<NOT,"+yytext()+">");}}
-"or"	{System.out.println("<OR,"+yytext()+">");}
-"and"	{System.out.println("<AND,"+yytext()+">");}
-"return"	{System.out.println("<RETURN,"+yytext()+">");}
-"void"	{System.out.println("<VOID,"+yytext()+">");}
-"int"	{System.out.println("<INT,"+yytext()+">");}
-"float"	{System.out.println("<FLOAT,"+yytext()+">");}
 
-{Identificador}	{System.out.println("<Ident,"+yytext()+">");}
-{Constint}	{System.out.println("<Constint,"+yytext()+">");}
-{Constfloat}	{System.out.println("<Constfloat,"+yytext()+">");}
-{Constlit}	{System.out.println("<Constlit,"+yytext()+">");}
+"struct"	{return java_cup.runtime.Symbol(sym.struct);}
+"if"	{return java_cup.runtime.Symbol(sym.if);}
+"then"	{return java_cup.runtime.Symbol(sym.then);}
+"else"	{return java_cup.runtime.Symbol(sym.else);}
+"for"	{return java_cup.runtime.Symbol(sym.for);}
+"while"	{return java_cup.runtime.Symbol(sym.while);}
+"do"	{return java_cup.runtime.Symbol(sym.do);}
+"until"	{return java_cup.runtime.Symbol(sym.until);}
+"not"	{return java_cup.runtime.Symbol(sym.not);}
+"or"	{return java_cup.runtime.Symbol(sym.or);}
+"and"	{return java_cup.runtime.Symbol(sym.and);}
+"return"	{return java_cup.runtime.Symbol(sym.return);}
+"void"	{return java_cup.runtime.Symbol(sym.void);}
+"int"	{return java_cup.runtime.Symbol(sym.int);}
+"float"	{return java_cup.runtime.Symbol(sym.float);}
+
+{Identificador}	{return java_cup.runtime.Symbol(sym.ident);}
+{Constint}	{return java_cup.runtime.Symbol(sym.constint);}
+{Constfloat}	{return java_cup.runtime.Symbol(sym.constfloat);}
+{Constlit}	{return java_cup.runtime.Symbol(sym.constlit);}
+//Control de errores
 "'" {System.out.println("\""+"Error. Constante literal incompleta."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
-{Comentario}	{System.out.println("<Comentario,"+yytext()+">");}
+{Comentario}	{return java_cup.runtime.Symbol(sym.comentario);}
 "/*"  {System.out.println("\""+"Error. Comentario multilinea de apertura incompleto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 "*/"  {System.out.println("\""+"Error. Comentario multilinea de cierre incompleto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 {RealHexaError} {System.out.println("\""+"Error. Numero Hexadecimal incorrecto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 {RealOctalError} {System.out.println("\""+"Error. Numero Octal incorrecto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
-"+"	{System.out.println("<Suma,"+yytext()+">");}
-"-"	{System.out.println("<Resta,"+yytext()+">");}
-"."	{System.out.println("<Punto,"+yytext()+">");}
+"+"	{return java_cup.runtime.Symbol(sym.suma);}
+"-"	{return java_cup.runtime.Symbol(sym.resta);}
+"."	{return java_cup.runtime.Symbol(sym.punto);}
+>>>>>>> 828dc219d4c34abd43b233ecec3f0bc02bc79f04
