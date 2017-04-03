@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+import java_cup.runtime.*
 
 %%
-%standalone
-%class Fallo
-
+%cup
+%class Lexico
+%unicode
 %line
 %column
 
@@ -37,16 +37,16 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 ","	{return java_cup.runtime.Symbol(sym.coma);}
 ";" {return java_cup.runtime.Symbol(sym.puntoycoma);}
 "="	{return java_cup.runtime.Symbol(sym.igual);}
-"("	{return java_cup.runtime.Symbol(pAbierto);}
+"("	{return java_cup.runtime.Symbol(sym.pAbierto);}
 ")"	{return java_cup.runtime.Symbol(sym.pCerrado);}
 "{"	{return java_cup.runtime.Symbol(sym.llaveAbierta);}
 "}"	{return java_cup.runtime.Symbol(sym.llaveCerrada);}
 " " {return java_cup.runtime.Symbol(sym.espacio);}
 
 "*"	{return java_cup.runtime.Symbol(sym.por);}
-"/"	{return java_cup.runtime.Symbol(sym.barrainclinada);}
+"/"	{return java_cup.runtime.Symbol(sym.division);}
 "%"	{return java_cup.runtime.Symbol(sym.resto);}
-"=="	{return java_cup.runtime.Symbol(sym.igual);}
+"=="	{return java_cup.runtime.Symbol(sym.dobleigual);}
 "<"	{return java_cup.runtime.Symbol(sym.menorque);}
 ">"	{return java_cup.runtime.Symbol(sym.mayorque);}
 ">="	{return java_cup.runtime.Symbol(sym.mayoroigualque);}
@@ -83,4 +83,3 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 "+"	{return java_cup.runtime.Symbol(sym.suma);}
 "-"	{return java_cup.runtime.Symbol(sym.resta);}
 "."	{return java_cup.runtime.Symbol(sym.punto);}
->>>>>>> 828dc219d4c34abd43b233ecec3f0bc02bc79f04
