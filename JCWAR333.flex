@@ -1,8 +1,8 @@
-import java_cup.runtime.*
+import java_cup.runtime.*;
 
 %%
-%cup
 %class Lexico
+%cup
 %unicode
 %line
 %column
@@ -34,45 +34,45 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 %%
 
 
-","	{return java_cup.runtime.Symbol(sym.coma);}
-";" {return java_cup.runtime.Symbol(sym.puntoycoma);}
-"="	{return java_cup.runtime.Symbol(sym.igual);}
-"("	{return java_cup.runtime.Symbol(sym.pAbierto);}
-")"	{return java_cup.runtime.Symbol(sym.pCerrado);}
-"{"	{return java_cup.runtime.Symbol(sym.llaveAbierta);}
-"}"	{return java_cup.runtime.Symbol(sym.llaveCerrada);}
-" " {return java_cup.runtime.Symbol(sym.espacio);}
+","	{return new java_cup.runtime.Symbol(sym.coma);}
+";" {return new java_cup.runtime.Symbol(sym.puntoycoma);}
+"="	{return new java_cup.runtime.Symbol(sym.igual);}
+"("	{return new java_cup.runtime.Symbol(sym.pAbierto);}
+")"	{return new java_cup.runtime.Symbol(sym.pCerrado);}
+"{"	{return new java_cup.runtime.Symbol(sym.llaveAbierta);}
+"}"	{return new java_cup.runtime.Symbol(sym.llaveCerrada);}
+" " {return new java_cup.runtime.Symbol(sym.espacio);}
 
-"*"	{return java_cup.runtime.Symbol(sym.por);}
-"/"	{return java_cup.runtime.Symbol(sym.division);}
-"%"	{return java_cup.runtime.Symbol(sym.resto);}
-"=="	{return java_cup.runtime.Symbol(sym.dobleigual);}
-"<"	{return java_cup.runtime.Symbol(sym.menorque);}
-">"	{return java_cup.runtime.Symbol(sym.mayorque);}
-">="	{return java_cup.runtime.Symbol(sym.mayoroigualque);}
-"<="	{return java_cup.runtime.Symbol(sym.menoroigualque);}
+"*"	{return new java_cup.runtime.Symbol(sym.por);}
+"/"	{return new java_cup.runtime.Symbol(sym.division);}
+"%"	{return new java_cup.runtime.Symbol(sym.resto);}
+"=="	{return new java_cup.runtime.Symbol(sym.dobleigual);}
+"<"	{return new java_cup.runtime.Symbol(sym.menorque);}
+">"	{return new java_cup.runtime.Symbol(sym.mayorque);}
+">="	{return new java_cup.runtime.Symbol(sym.mayoroigualque);}
+"<="	{return new java_cup.runtime.Symbol(sym.menoroigualque);}
 
 
-"struct"	{return java_cup.runtime.Symbol(sym.struct);}
-"if"	{return java_cup.runtime.Symbol(sym.if);}
-"then"	{return java_cup.runtime.Symbol(sym.then);}
-"else"	{return java_cup.runtime.Symbol(sym.else);}
-"for"	{return java_cup.runtime.Symbol(sym.for);}
-"while"	{return java_cup.runtime.Symbol(sym.while);}
-"do"	{return java_cup.runtime.Symbol(sym.do);}
-"until"	{return java_cup.runtime.Symbol(sym.until);}
-"not"	{return java_cup.runtime.Symbol(sym.not);}
-"or"	{return java_cup.runtime.Symbol(sym.or);}
-"and"	{return java_cup.runtime.Symbol(sym.and);}
-"return"	{return java_cup.runtime.Symbol(sym.return);}
-"void"	{return java_cup.runtime.Symbol(sym.void);}
-"int"	{return java_cup.runtime.Symbol(sym.int);}
-"float"	{return java_cup.runtime.Symbol(sym.float);}
+"struct"	{return new java_cup.runtime.Symbol(sym.struct);}
+"if"	{return new java_cup.runtime.Symbol(sym.ifaux);}
+"then"	{return new java_cup.runtime.Symbol(sym.thenaux);}
+"else"	{return new java_cup.runtime.Symbol(sym.elseaux);}
+"for"	{return new java_cup.runtime.Symbol(sym.foraux);}
+"while"	{return new java_cup.runtime.Symbol(sym.whileaux);}
+"do"	{return new java_cup.runtime.Symbol(sym.doaux);}
+"until"	{return new java_cup.runtime.Symbol(sym.until);}
+"not"	{return new java_cup.runtime.Symbol(sym.not);}
+"or"	{return new java_cup.runtime.Symbol(sym.or);}
+"and"	{return new java_cup.runtime.Symbol(sym.and);}
+"return"	{return new java_cup.runtime.Symbol(sym.returnaux);}
+"void"	{return new java_cup.runtime.Symbol(sym.voidaux);}
+"int"	{return new java_cup.runtime.Symbol(sym.intaux);}
+"float"	{return new java_cup.runtime.Symbol(sym.floataux);}
 
-{Identificador}	{return java_cup.runtime.Symbol(sym.ident);}
-{Constint}	{return java_cup.runtime.Symbol(sym.constint);}
-{Constfloat}	{return java_cup.runtime.Symbol(sym.constfloat);}
-{Constlit}	{return java_cup.runtime.Symbol(sym.constlit);}
+{Identificador}	{return new java_cup.runtime.Symbol(sym.ident);}
+{Constint}	{return new java_cup.runtime.Symbol(sym.constint);}
+{Constfloat}	{return new java_cup.runtime.Symbol(sym.constfloat);}
+{Constlit}	{return new java_cup.runtime.Symbol(sym.constlit);}
 //Control de errores
 "'" {System.out.println("\""+"Error. Constante literal incompleta."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 {Comentario}	{return java_cup.runtime.Symbol(sym.comentario);}
@@ -80,6 +80,6 @@ Comentario = {ComentarioLinea}|{ComentarioLargo}
 "*/"  {System.out.println("\""+"Error. Comentario multilinea de cierre incompleto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 {RealHexaError} {System.out.println("\""+"Error. Numero Hexadecimal incorrecto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
 {RealOctalError} {System.out.println("\""+"Error. Numero Octal incorrecto."+" Linea: "+yyline+" Columna: "+ yycolumn +" "+ yytext()+"\"");}
-"+"	{return java_cup.runtime.Symbol(sym.suma);}
-"-"	{return java_cup.runtime.Symbol(sym.resta);}
-"."	{return java_cup.runtime.Symbol(sym.punto);}
+"+"	{return new java_cup.runtime.Symbol(sym.suma);}
+"-"	{return new java_cup.runtime.Symbol(sym.resta);}
+"."	{return new java_cup.runtime.Symbol(sym.punto);}

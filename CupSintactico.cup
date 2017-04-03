@@ -1,19 +1,18 @@
 import java_cup.runtime.*;
-terminal ident, pAbierto, pCerrado, por, puntoycoma, division, suma, resta, return, float, llaveAbierta, llaveCerrada, void, coma, constfloat, constint, constlit, int, resto, igual;
+terminal ident, pAbierto, pCerrado, por, puntoycoma, division, suma, resta, returnaux, floataux, llaveAbierta, llaveCerrada, voidaux, coma, constfloat, constint, constlit, intaux, resto, igual;
 non terminal PART, PROGRAM, RESTPART, TYPE, BLQ, LISTPARAM, SENTLIST, SENT, LID, LEXP, EXP, OP, FACTOR;
 
-PROGRAM ::= PART PROGRAM | PART
-PART ::= TYPE RESTPART
-RESTPART ::= ident pAbierto LISTPARAM pCerrado BLQ
-BLQ ::= llaveAbierta SENTLIST llaveCerrada
-LISTPARAM ::= LISTPARAM coma TYPE ident | TYPE ident
-TYPE ::= void | int | float
+PROGRAM ::= PART PROGRAM | PART;
+PART ::= TYPE RESTPART;
+RESTPART ::= ident pAbierto LISTPARAM pCerrado BLQ;
+BLQ ::= llaveAbierta SENTLIST llaveCerrada;
+LISTPARAM ::= LISTPARAM coma TYPE ident | TYPE ident;
+TYPE ::= voidaux | intaux | floataux;
 
-SENTLIST ::= SENTLIST SENT | SENT
-SENT ::= TYPE LID puntoycoma | ident igual EXP puntoycoma | ident pAbierto LEXP pCerrado puntoycoma | return EXP puntoycoma
-LID ::= ident | LID coma ident
-LEXP ::= EXP | LEXP coma EXP
-EXP ::= EXP OP EXP | FACTOR
-OP ::= suma | resta | por | division | resto
-FACTOR ::= ident pAbierto LEXP pCerrado | pAbierto EXP pCerrado | ident | constint | constfloat | constlit
-
+SENTLIST ::= SENTLIST SENT | SENT;
+SENT ::= TYPE LID puntoycoma | ident igual EXP puntoycoma | ident pAbierto LEXP pCerrado puntoycoma | returnaux EXP puntoycoma;
+LID ::= ident | LID coma ident;
+LEXP ::= EXP | LEXP coma EXP;
+EXP ::= EXP OP EXP | FACTOR;
+OP ::= suma | resta | por | division | resto;
+FACTOR ::= ident pAbierto LEXP pCerrado | pAbierto EXP pCerrado | ident | constint | constfloat | constlit;
